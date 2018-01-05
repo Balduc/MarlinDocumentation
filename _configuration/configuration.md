@@ -1173,6 +1173,10 @@ Enable this option if a probe (not an endstop) is being used for Z homing. Z Saf
 ```
 Homing speed for use in auto home and auto bed leveling. These values may be set to the fastest speeds your machine can achieve. Homing and probing speeds are constrained by the current max feedrate and max acceleration settings.
 
+Since the Homing speed (and some others features) are in millimeter per minute (mm/m), and all the rest of the code is in millimeter per second (mm/s), we simply put X*60 for easy calculation, where x is youre wanted speed in millimeter per second (mm/s), and, therefore multiplie by 60,is now in millimeter per minute (mm/m).
+
+See `HOMING_BUMP_DIVISOR` to set the speed after the first hit at the endstop.
+
 {% alert warning %}
 Setting these values too high may result in reduced accuracy and/or skipped steps. Reducing acceleration may help to achieve higher top speeds.
 {% endalert %}
